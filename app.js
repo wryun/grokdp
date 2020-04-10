@@ -1,15 +1,19 @@
-import model   from './model'
-import actions from './actions'
-import header  from './header'
-import main    from './main'
-import footer  from './footer'
+import model   from './model.js'
+import actions from './actions.js'
+import header  from './header.js'
+import main    from './main.js'
+import footer  from './footer.js'
+import toggles from './toggles.js'
+import slackexport  from './slackexport.js'
 
 const app = {
   oninit: () => actions.init(),
   view: () => [
+    model.todos.length > 0 && m(toggles),
     m(header), 
-    model.todos.length > 0 && m(main),
-    model.todos.length > 0 && m(footer)
+    model.todos.length > 0 && !model.slackexport && m(main),
+    model.todos.length > 0 && model.slackexport && m(slackexport),
+    model.todos.length > 0 && m(footer),
   ]
 }
 

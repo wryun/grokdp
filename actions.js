@@ -1,4 +1,4 @@
-import model from './model'
+import model from './model.js'
 
 const actions = {
   init: () => {model.todos = JSON.parse(localStorage.getItem('todos-mithril')) || []},
@@ -12,14 +12,33 @@ const actions = {
     if (x === 'all') {
       model.todos.forEach(x => x.completed = model.all)
       model.all = !model.all
+    } else {
+      const todo = model.todos[x];
+      if (todo.completed) {
+        todo.completed = false;
+      } else if (todo.indeterminate) {
+        todo.indeterminate = false;
+        todo.completed = true;
+      } else {
+        todo.indeterminate = true;
+      }
     }
-    else model.todos[x].completed = !model.todos[x].completed
     actions.save()
   },
-  clear: () => {
-    model.todos = model.todos.filter(x => !x.completed)
-    model.all = true
-    actions.save()
+  changeday: () => {
+    model.duringday = !model.duringday;
+
+    if (!model.duringday) {
+      // The day must have just finished.
+      model.todos = model.todos
+        .filter(x => !x.completed)
+        .map(x => {
+          x.indeterminate = x.additional = false;
+          return x;
+        })
+      model.all = true
+      actions.save()
+    }
   },
   splice: i => {
     model.todos.splice(i,1)

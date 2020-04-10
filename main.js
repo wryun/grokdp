@@ -1,5 +1,5 @@
-import model   from './model'
-import actions from './actions'
+import model   from './model.js'
+import actions from './actions.js'
 
 const main = () => {
   const escape = 27
@@ -28,9 +28,10 @@ const main = () => {
                 m('input.toggle', {
                   type: 'checkbox',
                   checked: x.completed,
+                  indeterminate: x.indeterminate,
                   onchange: () => actions.done(i)
                 }),
-                m('label', {ondblclick: () => todo = actions.clone(x)}, x.title),
+                m('label', {ondblclick: () => todo = actions.clone(x)}, `${x.additional ? '➕ ' : ''}${x.title}`),
                 m('button.destroy', {onclick: () => actions.splice(i)})
               ),
               m('input.edit', {

@@ -1,5 +1,5 @@
-import model   from './model'
-import actions from './actions'
+import model   from './model.js'
+import actions from './actions.js'
 
 const footer = () => {
   const left = () => model.todos.filter(x => !x.completed).length
@@ -20,10 +20,9 @@ const footer = () => {
             )
           )
         ),
-        model.todos.find(x => x.completed) &&
-        m('button.clear-completed', {
-          onclick: actions.clear
-        }, 'Clear completed')
+        m('button.day', {
+          onclick: actions.changeday,
+        }, model.duringday ? 'Prepare for next day' : 'Start working')
       )
   }
 }

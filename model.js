@@ -7,6 +7,8 @@ const model = {
   ],
   filter: 'All',
   all: true,
+  slackexport: false,
+  duringday: false,
   enter: 13
 }
 
