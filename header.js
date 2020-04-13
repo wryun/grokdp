@@ -8,7 +8,7 @@ const header = () => {
     todon.id = Date.now()
     todon.title.trim()
     todon.additional = model.duringday
-    todon.indeterminate = model.duringday;
+    todon.indeterminate = model.duringday
     todon.completed = false
     actions.push(todon)
     todon = {}

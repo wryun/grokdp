@@ -2,17 +2,17 @@ import model from './model.js'
 
 function getState(todoItem) {
   if (todoItem.completed) {
-    return '✔';
+    return '✔'
   }
   if (todoItem.indeterminate) {
-    return '➖';
+    return '➖'
   }
 
   if (model.duringday) {
-    return '❌';
+    return '❌'
   }
 
-  return '🔲';
+  return '🔲'
 }
 
 const slackexport = () => {

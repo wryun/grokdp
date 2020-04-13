@@ -10,31 +10,34 @@ const actions = {
   },
   done: x => {
     if (x === 'all') {
-      model.todos.forEach(x => x.completed = model.all)
+      model.todos.forEach(x => {
+        x.completed = model.all
+        x.indeterminate = false
+      })
       model.all = !model.all
     } else {
-      const todo = model.todos[x];
+      const todo = model.todos[x]
       if (todo.completed) {
-        todo.completed = false;
+        todo.completed = false
       } else if (todo.indeterminate) {
-        todo.indeterminate = false;
-        todo.completed = true;
+        todo.indeterminate = false
+        todo.completed = true
       } else {
-        todo.indeterminate = true;
+        todo.indeterminate = true
       }
     }
     actions.save()
   },
   changeday: () => {
-    model.duringday = !model.duringday;
+    model.duringday = !model.duringday
 
     if (!model.duringday) {
       // The day must have just finished.
       model.todos = model.todos
         .filter(x => !x.completed)
         .map(x => {
-          x.indeterminate = x.additional = false;
-          return x;
+          x.indeterminate = x.additional = false
+          return x
         })
       model.all = true
       actions.save()
