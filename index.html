@@ -6,9 +6,22 @@
 <body>
   <section class="todoapp"></section>
   <footer class="info">
-    <p>Double-click to edit a todo</p>
     <p>Stolen from <a href="https://github.com/MithrilJS/mithril.js/issues/2499">a github issue</a></p>
   </footer>
+
+  <p>
+    <h2>How-to:</h2>
+
+    <ul>
+    <li> double click an item to edit it
+    <li> click the [] slack export checkbox to get it in a form to copy/paste into slack
+    <li> if you haven't started working (bottom right), the unticked items will export as :black_square_button:
+    <li> if you're working, the unticked items will export as 🔲
+    <li> if you're working and you add new items, they'll have an extra ➕ (to show you didn't anticipate them) and be initially set to ➖ (since you may have just started working on them anyway - click to change)
+    <li> when you started working on an item, you can click on it and it will initially go to a ➖ state, which shows that you did something. Click again to make it a ✔
+    <li> when you've finished working (bottom right), it will clear all the checked items and remove any ➖ and ➕ marks. i.e. you should export before you 'prepare for next' for daily-priorities, click 'prepare for next day', make the next/current day's list, then export again, then click 'start working' (edited) 
+    </ul>
+  </p>
 
   <script src="mithril.js"></script>
   <script src="app.js" type="module"></script>
